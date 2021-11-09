@@ -1,4 +1,6 @@
 # Work-Study
+Python scripts, Linux commands, VIM text editor shortcuts that I found helpful
+
 
 Need to use Python to plot frequency response of amplifiers. 
 
