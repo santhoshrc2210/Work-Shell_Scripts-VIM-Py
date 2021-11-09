@@ -1,0 +1,38 @@
+List of VIM text editor shortcuts that I found helpful at work
+
+
+go to a line number in vim: type line number and then shift+g
+
+39. Vim to compare files
+    a. Open the first file in vim
+    b. Type :vsplit to get two panes side by side (tip: maximise the window on your widescreen monitor before you run this command)
+    c. Jump to the second pane (Ctrl+w followed by arrow key) and then open the other file :e filename
+
+28. How to remove a character from all lines in Vim: 
+Place cursor on first or last ;
+Press Ctrl+v to enter Visual Block mode
+Use arrow keys or j, k to select the ; characters you want to delete (or the other "first few characters")
+Press x to delete them all at once
+
+29. If you want to search and replace the pattern in the entire file, use the percentage character % as a range. 
+This character indicates a range from the first to the last line of the file:
+
+For example, to search for the first occurrence of the string ‘foo’ in the current line and replace it with ‘bar’, you would use:
+% as a range that covers entire file, can use different delimiting character if '/' is already present use # for eg.
+:%s/foo/bar/ or :%s#foo#bar#gg
+
+:%s/foo/bar/g ; Find each occurrence of 'foo' (in all lines), and replace it with 'bar
+
+:%s/$/,/ ; add , to the end of every line
+
+:%s/^/,/ ; add , to the beginning of every line
+
+42. vim text editor commands to replace text:
+      1. ctrl + v to go into visual mode
+      2. select the text using hjkl or arrow keys
+      3. type r and then type the text that needs to replaced
+43.  :r file : write contents of the file to the vim file, useful for writing same text to many file
+
+44. How to open a file in vim whose path is given
+
+45. To go to end of line use $ 
