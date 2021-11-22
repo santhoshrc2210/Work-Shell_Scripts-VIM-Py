@@ -1,0 +1,5 @@
+Modify the shell script from exercise 1 to include a variable
+
+#!/bin/bash
+MESSAGE="Shell Scripting is Fun"
+echo $MESSAGE
