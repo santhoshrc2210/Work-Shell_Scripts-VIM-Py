@@ -9,6 +9,7 @@ Reference Books:
 3. Sed and Awk by Dougherty, Dale Robbins, Arnold
 4. Classic Shell Scripting: Hidden Commands that Unlock the Power of Unix by Arnold Robbins, Nelson H. Beebe, Nathan Torkington
 5. Learning the vi and Vim Editors by Arnold Robbins, Linda Lamb, Elbert Hannah
+6. Google search/ Online Forums
 
 Need to use Python to plot frequency response of amplifiers. 
 https://personal.math.ubc.ca/~pwalls/math-python/
