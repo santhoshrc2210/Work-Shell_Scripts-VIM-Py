@@ -1,0 +1,167 @@
+Linux Commands
+
+1. rm -rf 
+
+2. cd ../mydir  : Go up to my parent, then into directory mydir
+3. bjobs | wc -l
+word count the number of jobs running 
+
+4.cp copy, mv move, rm remove, to copy directerios use "cp -rf", to copy to present directory use:
+Cp  -rf filepath .
+
+5. bjobs list of jobs running
+7. cd .. go up one level 
+8. cd - go back to previous directory
+9. mail rvelithx -a creport.txt ; mail rvelithx -a <filepath1> -a <filepath2> mailing multiple files ;-a for attachments
+after typing in subject : ctrl+D for the e-mail to be sent
+
+10. ctrl z suspends the foreground process and ctrl c :terminate the current foreground command right now
+11. arc submit flow/finesim/4cpu mem=8000 -- finesim -np 4 *.sp
+run in parallel all files ending with .sp
+
+12. source results/run_eos_with_probes.sh
+
+13. Ctrl+A or Home – moves the cursor to the start of a line.
+
+14. Ctrl+E or End – moves the cursor to the end of the line
+    ctrl+U erase entire line
+
+15. find -name "*.sp" : find files with extension .sp * wildcards
+
+17. copy a text to multiple folders : tee command, ex:
+
+18. paste 
+
+19. source is a shell built-in command which is used to read and execute the content of a file(generally set of commands), 
+passed as an argument in the current shell script 
+
+20. arc submit -i synopsys_waveview-lic - wv : to open waveview
+      arc submit wv; arc submit makes use of the load sharing facility instead of running on the desktop 
+
+21. grep -c "padvrefmux" ./eos/acff_125/vio_report_sorted.log : count the number of times the word in double quotes occurs in that file
+
+22. grep "padvrefmux" ./eos/acff_125/vio_report_sorted.log | grep namp | wc -l
+
+23. grep ERROR `find -name "*log"` : look for errors in the log f
+
+24. cp `find -name "*ac0"` ac0/ : copy all files that end with ac0 to ac0/ directory : NOT WORKING  Backquotes (“backticks”) cause their contents to be evaluated as a shell command
+
+25. find -name "*sp" | grep template : find all files that end with *sp extension, in the template folder
+  
+26. gvim `find -name "*sp" | grep template`  : open all these files
+
+27. cat axsf_gs/tttt/tttt_125/vccmax_vcnmin/sim_offset.op | grep -A 15 "element.*imatched.*ppath.*amp2.*amp2_p.*qn3.*0.*xq0.*mqn0"
+print the part of the file that grep uses to search in double quotes following 15 lines 
+
+29. For every new terminal :
+source /p/psg/ctools/arc/current/arc.cshrc 
+alias source1 arc shell project/falcon/fp8/0.8/phys/
+alias source2  arc shell icf_models/P1275_21/p1275_21x3r1,synopsys_finesim/R-2020.12-SP1-1,synopsys_hspice/R-2020.12-3
+alias source3  arc shell project/falcon/fp8/0.8/phys,synopsys_waveview/R-2020.12-SP1
+#alias virtu 'arc submit -i mem=32000 -- virtuoso &'
+alias waveview 'arc submit -i synopsys_waveview-lic - wv'
+alias bjobs 'bjobs_nb -u `whoami`'
+
+30. *******************VERY USEFUL ******************* runs same command for different files in one single go
+find -name "*creport*"  ; find all files that end with creport in the directory
+find -name "*creport*" > file  ; write this list to a file
+cp file file1 ; copy to another file file1
+gvim file1 ; open using vim text editor
+paste file file1 > file2 ; contents of file as coloumn 1 and file1 as coloumn 2 and write this content to file2
+gvim file2 ; open using vim text editor
+source file2 ; run commands in file 2 add cp or mv so it runs same command for different files in one single go
+
+
+31. diff : diffference between two files
+    sdiff: compares two files and prints the difference side by side
+
+32. For pipelining programs the output of left command goes to the command on the right as input
+who | wc -l ; count the number of users logged in to the computer
+
+
+33. awk : AWK is a pattern-matching language. It matches data by regu‐
+lar expression and then performs actions based on the data
+awk '{print $2, $4}' myfile : Print the second and fourth word on each line
+
+
+34. cut : The cut command extracts columns of text from files
+
+cut -c19 myfile : The cut command extracts columns of text from files. A “col‐
+umn” is defined by character offsets (e.g., the nineteenth char‐
+acter of each line)
+
+35. ls *.jpg | cut -d. -f1 > /tmp/jpegs : list all files with jpg extension, remove the extension(first word?? occurs after .)  and write to a temporary file
+
+
+36. diff <(ls *.jpg|cut -d. -f1) <(ls *.txt|cut -d. -f1) : Each <() operator stands in for a filename on the command
+line, as if that “file” contained the output of ls and cut
+
+37. Filename completion: Press the Tab key while you are in the middle of typing a file‐
+name, and the shell will automatically complete (finish typing)
+the filename for you
+
+we sort the output of who again, extract the first
+column of information (using awk), and display the results one
+page at a time (using less)who | sort | awk '{print $1}' | less  : we sort the output of who again, extract the first
+column of information (using awk), and display the results one
+page at a time (using less)
+
+38. ctrl+z suspend a job
+    ctrl +c kill a job
+
+
+40. if shell prompt does not appear:
+1. Press ^J to get a shell prompt. This keystroke produces the
+same character as the Enter key (a newline) but will work
+even if Enter does not.
+
+2. Type the shell command reset (even if the letters don’t
+appear while you type) and press ^J again to run this com‐
+mand. This should bring your shell back to normal.
+
+41. To terminate a shell either run the exit command or type ctrl+d
+
+43. cat creport.txt| awk '{print $7,$1,$2,$3}'| sort -n | head :  sort according to coloumn 7, numerical -n, in ascending order and print first ten lines
+
+44.  cat important | xargs ls -l  : For instance, the following command runs the ls -l command on all the listed files  in important. Useful for running same command for a list of files.
+
+
+45. find -name "*log" | xargs grep ERROR : search all files listed by find command for error
+
+46. du -sh * : print the total size, only directories and not folders within and in readable format, depending on the size it will use different format for size mb, gb, kb
+
+47. grep vfrzreg `find -name "eos_modetran*sp"` : print the line containing the word vfrzreg in each of the files found by the find command 
+
+48. If in a file first line is set of x co-ordinates and second line is a set of y co-ordinates then to print the corresponding x and y co-ordinates in a single line
+cat ./eosrun/acff_125/eos_with_probes.mt0 | awk '{for(i=1;i<=NF;i++)a[i][NR]=$i}END{for(i in a)for(j in a[i])printf"%s"(j==NR?"\n":FS),a[i][j]}' > violog
+cat ./eosrun/acss_-40/eos_with_probes.mt0 | awk '{for(i=1;i<=NF;i++)a[i][NR]=$i}END{for(i in a)for(j in a[i])printf"%s"(j==NR?"\n":FS),a[i][j]}' >violog
+
+49. Intro to awk:  www.youtube.com/watch?v=9YOZmI-zWok
+50. Intro to sed: www.youtube.com/watch?v=EACe7aiGczw&list=RDCMUCVls1GmFKf6WlTraIb_IaJg&index=3
+
+51. Shell scripts to find (x,y) >3uA and print it to another file
+52. shell scripts to generate columns of data from mt0 files
+53. shell script to change name and copy to another directory
+
+54. find -name "vio_report_sorted.log" | grep "discharge" | grep -v "archive" : to not include the keyword archive in grep search
+55. find -maxdepth 1 -name "*log" > outfiles : search only in current directory and not in subdirecteries
+
+56. sed -i 's/acff/acss/g' outfiles : replace all occurrences of acff with acss, -i option replaces the old text in the file, otherwise sed simply prints the new text to screen, file will remain unchanged
+57. grep 'TITLE' PDS_B_acff_-40.log : search for sentences with TITLE
+58.  find ./eosrun_1_12/ -name "*fsdb" : search fsdb file in the folder name given and not all folders
+59. grep -c ’ˆ$’ ch04 : You might use this pattern to count the number of blank lines in a file using the count option, -c, to gr ep 
+60. search and replace for one line only
+61. arc cancel <the number after #> : if you want to cancel arc jobs
+62. arc submit -i "node/[memory>=8000]" group=jesd204 priority=60 – console  : to open a knsole with more processing power
+63. history | grep arc : history of commands used  						
+64.  to kill a job : nbjob remove --target png_vp "fullid=='png_vp.job id' "
+  
+65. How to copy all files except folders:
+
+66. gnumeric eosrun_1_5/acff_-40/eos_with_probes1.mt0 : linux form of excel
+67. grep OR : grep 'pattern1\|pattern2' filename
+For AND OR : www.thegeekstuff.com/2011/10/grep-or-and-not-operators/
+68. grep Fail_ODC pua_review*csv : search for Fail_ODC in all files that match the pattern
+69. sort -u similar to unique with additional sorting feature alphabetically
+70. chmod 777 voltage_save_state : rwr permissons for all 3 types of users, if you are owner of file
+
