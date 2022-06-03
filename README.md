@@ -1,5 +1,5 @@
 # Work-Study
-Python scripts, Linux commands, Shell scripts, VIM text editor shortcuts that I found helpful at work
+ Linux commands, Shell scripts, VIM text editor automation shortcuts that I found helpful at work
 
 
 
